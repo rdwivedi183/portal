@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './components/auth/Login';
 import PrivateRoute from './components/PrivateRoute';
 import EmployList from './pages/EmployList';
+import NotFound from './pages/NotFound';
 
 function App() {
   const theme = useSelector(selectTheme);
@@ -21,6 +22,7 @@ function App() {
           <Routes>
             {/* Public routes */}
             <Route path="/login" element={<Login />} />
+            <Route path="*" element={<NotFound />} />
 
             {/* Private route using PrivateRoute component */}
             <Route path="/" element={<PrivateRoute />}>
