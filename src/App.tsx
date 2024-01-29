@@ -6,16 +6,28 @@ import { selectTheme } from './redux/themeSlice';
 import Dashboard from './pages/Dashboard';
 import { ThemeProvider } from 'styled-components';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Login from './components/auth/Login';
+import PrivateRoute from './components/PrivateRoute';
+import EmployList from './pages/EmployList';
 
 function App() {
   const theme = useSelector(selectTheme);
+
   return (
     <ThemeProvider theme={{ mode: theme }}>
       <Router>
         <div>
           <Header theme={theme} />
           <Routes>
-            <Route path="/" element={<Dashboard />} />
+            {/* Public routes */}
+            <Route path="/login" element={<Login />} />
+
+            {/* Private route using PrivateRoute component */}
+            <Route path="/" element={<PrivateRoute />}>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/list" element={<EmployList />} />
+            </Route>
+
           </Routes>
         </div>
       </Router>

@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toggleTheme, selectTheme } from '../redux/themeSlice';
 import light from '../assets/images/light.svg';
 import darkTheme from '../assets/images/dark.svg';
+
+
 const ThemeToggle: React.FC = () => {
   const dispatch = useDispatch();
   const theme = useSelector(selectTheme);
@@ -13,11 +15,11 @@ const ThemeToggle: React.FC = () => {
   };
 
   return (
-    <div>
-      <button onClick={handleToggle}>
-        {theme === 'light' ? <img src={light} alt="" />
-          : <img src={darkTheme} alt="" />}</button>
-    </div>
+    <button onClick={handleToggle}>
+      {theme === 'light' ? <img src={light} alt="" />
+        : <img src={darkTheme} alt="" />}
+    </button>
+
   );
 };
 
